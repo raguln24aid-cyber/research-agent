@@ -70,22 +70,6 @@ Generates a structured final report.
 
 ---
 
-## Screenshots
-
-### Login Page
-
-![Login](screenshots/login.png)
-
-### Dashboard
-
-![Dashboard](screenshots/dashboard.png)
-
-### Research Workflow
-
-![Research Running](screenshots/research-running.png)
-
----
-
 ## Project Structure
 
 ```text
@@ -147,7 +131,6 @@ npm run dev
 
 ## Future Improvements
 
-- LangGraph Integration
 - Real-time Agent Monitoring
 - PDF Export
 - Source Verification
@@ -162,12 +145,13 @@ Ragul N
 
 
 GitHub: https://github.com/raguln24aid-cyber
-<img width="1918" height="970" alt="Screenshot 2026-06-17 095420" src="https://github.com/user-attachments/assets/28b5e4d0-9e8c-4bd6-876f-6fc166bc427f" />
-<img width="1918" height="970" alt="Screenshot 2026-06-17 095400" src="https://github.com/user-attachments/assets/34265e08-df99-4483-bc10-0b4b5d4e9775" />
-<img width="1918" height="972" alt="Screenshot 2026-06-17 095346" src="https://github.com/user-attachments/assets/73480fb1-58da-4085-985c-c725e2bdfcca" />
-<img width="1918" height="971" alt="Screenshot 2026-06-17 095210" src="https://github.com/user-attachments/assets/33cc9b2e-99c1-485b-b2c0-0f0e3b5d79fb" />
-<img width="1918" height="972" alt="Screenshot 2026-06-17 095155" src="https://github.com/user-attachments/assets/7658e301-6eea-45bf-8747-a31ca4a584d7" />
-<img width="1918" height="1031" alt="Screenshot 2026-06-17 095017" src="https://github.com/user-attachments/assets/af7658be-fdd2-4ba4-8ee2-d996613940af" />
+<img width="1918" height="1031" alt="Screenshot 2026-06-17 095017" src="https://github.com/user-attachments/assets/1a1ef30f-ae4a-4521-8a0f-9db6b4eeadef" />
+<img width="1918" height="970" alt="Screenshot 2026-06-17 095420" src="https://github.com/user-attachments/assets/af4f6213-6a44-4181-b108-00d27cc0133d" />
+<img width="1918" height="970" alt="Screenshot 2026-06-17 095400" src="https://github.com/user-attachments/assets/e07d871a-7930-4520-b90d-0dfcd0183856" />
+<img width="1918" height="972" alt="Screenshot 2026-06-17 095346" src="https://github.com/user-attachments/assets/2e2d0ce6-e99e-4dba-ad30-abda29e06c77" />
+<img width="1918" height="971" alt="Screenshot 2026-06-17 095210" src="https://github.com/user-attachments/assets/94ec46bf-45c9-4e16-82d7-8b981fcdace6" />
+<img width="1918" height="972" alt="Screenshot 2026-06-17 095155" src="https://github.com/user-attachments/assets/5a936561-e678-4f0d-bf1b-2e31c80846b5" />
+
 
 
 
