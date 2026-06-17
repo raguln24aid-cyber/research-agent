@@ -1,0 +1,117 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment Variables
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Pytest
+.pytest_cache/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Mypy
+.mypy_cache/
+
+# Ruff
+.ruff_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# =========================
+# FastAPI
+# =========================
+*.sqlite3
+*.db
+
+# =========================
+# Node.js / React / Vite
+# =========================
+node_modules/
+
+# Build Outputs
+dist/
+build/
+
+# Vite Cache
+.vite/
+
+# npm/yarn/pnpm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# MongoDB
+# =========================
+mongodb_data/
+
+# =========================
+# Uploads / Generated Files
+# =========================
+uploads/
+temp/
+tmp/
+reports/
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/
+
+# =========================
+# Testing
+# =========================
+coverage/
+.coverage.*
+
+# =========================
+# LangGraph / AI Agents
+# =========================
+checkpoints/
+agent_state/
+vector_store/
+chroma_db/
+faiss_index/
+
+# =========================
+# Secrets
+# =========================
+secrets.json
+credentials.json
+service-account.json
+
+# =========================
+# Docker
+# =========================
+.docker/
+
+# =========================
+# Misc
+# =========================
+*.bak
+*.swp
+*.swogit add .
