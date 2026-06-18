@@ -11,8 +11,10 @@ export function AuthProvider({ children }) {
     const token = localStorage.getItem("token") ?? sessionStorage.getItem("token");
     console.log('[Auth Hook] token loaded from storage =', token);
 
-    if (!token) {
-      console.log('[Auth Hook] No token found; user is unauthenticated');
+    if (!token || token === "undefined" || token === "null" || token.trim() === "") {
+      console.log('[Auth Hook] No valid token found; user is unauthenticated');
+      localStorage.removeItem("token");
+      sessionStorage.removeItem("token");
       setLoading(false);
       return;
     }

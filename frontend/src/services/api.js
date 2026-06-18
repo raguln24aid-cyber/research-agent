@@ -20,7 +20,10 @@ class ApiError extends Error {
 }
 
 async function request(path, options = {}) {
-  const token = localStorage.getItem("token");
+  let token = localStorage.getItem("token");
+  if (token === "undefined" || token === "null" || !token || token.trim() === "") {
+    token = null;
+  }
   console.log('[API Token Loading] path =', path, 'token found =', token ? `Bearer ${token.substring(0, 10)}...` : 'None');
 
   const headers = {
