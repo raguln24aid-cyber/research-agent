@@ -1,3 +1,6 @@
 python-dotenv
 pymongo
 groq
+pydantic==2.10.3
+langgraph==0.2.60
+langchain-core==0.3.28
