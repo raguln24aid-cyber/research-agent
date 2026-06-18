@@ -9,25 +9,31 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const token = localStorage.getItem("token") ?? sessionStorage.getItem("token");
-    console.log('[Auth] token loaded=', token);
-
+    console.log('[Auth Hook] token loaded from storage =', token);
 
     if (!token) {
+      console.log('[Auth Hook] No token found; user is unauthenticated');
       setLoading(false);
       return;
     }
 
-    console.log('[Auth] calling /auth/me');
-
+    console.log('[Auth Hook] token found; calling authService.me()');
 
     authService
       .me()
-
-      .then(setUser)
-      .catch(() => {
-        localStorage.removeItem("token");
+      .then((userData) => {
+        console.log('[Auth Hook] me() response user data =', userData);
+        setUser(userData);
       })
-      .finally(() => setLoading(false));
+      .catch((error) => {
+        console.error('[Auth Hook] me() call failed; clearing token from storage. Error:', error);
+        localStorage.removeItem("token");
+        setUser(null);
+      })
+      .finally(() => {
+        console.log('[Auth Hook] me() request completed; setting loading to false');
+        setLoading(false);
+      });
   }, []);
 
   const login = async (credentials) => {

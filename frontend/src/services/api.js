@@ -1,6 +1,16 @@
-const API_BASE = import.meta.env.VITE_API_BASE_URL ?? "/api";
+let rawBase = import.meta.env.VITE_API_BASE_URL;
+console.log('[API Base Resolution] raw VITE_API_BASE_URL =', rawBase);
 
-
+if (rawBase) {
+  rawBase = rawBase.trim().replace(/\/$/, "");
+  if (!rawBase.endsWith("/api")) {
+    rawBase = `${rawBase}/api`;
+  }
+} else {
+  rawBase = "/api";
+}
+const API_BASE = rawBase;
+console.log('[API Base Resolution] resolved API_BASE =', API_BASE);
 
 class ApiError extends Error {
   constructor(message, status) {
@@ -11,6 +21,8 @@ class ApiError extends Error {
 
 async function request(path, options = {}) {
   const token = localStorage.getItem("token");
+  console.log('[API Token Loading] path =', path, 'token found =', token ? `Bearer ${token.substring(0, 10)}...` : 'None');
+
   const headers = {
     "Content-Type": "application/json",
     ...options.headers,
@@ -20,27 +32,34 @@ async function request(path, options = {}) {
     headers.Authorization = `Bearer ${token}`;
   }
 
-console.log('[frontend fetch] API_BASE=', API_BASE, 'path=', path);
+  const url = `${API_BASE}${path}`;
+  console.log('[API Request] Sending request to:', url, 'Method:', options.method ?? 'GET', 'Headers:', headers, 'Body:', options.body);
 
-  const response = await fetch(`${API_BASE}${path}`, {
+  try {
+    const response = await fetch(url, {
+      ...options,
+      headers,
+    });
 
-    ...options,
-    headers,
-  });
+    console.log('[API Response Status] URL:', url, 'Status:', response.status, response.statusText);
 
-  const data = await response.json().catch(() => ({}));
+    const data = await response.json().catch(() => ({}));
+    console.log('[API Response Data] URL:', url, 'Data:', data);
 
-if (!response.ok) {
-    console.warn('[frontend fetch] non-OK', response.status);
+    if (!response.ok) {
+      console.warn('[API Response Error] URL:', url, 'Status:', response.status, 'Data:', data);
+      const detail = data.detail;
+      const message = Array.isArray(detail)
+        ? detail.map((d) => d.msg).join(", ")
+        : detail || "Request failed";
+      throw new ApiError(message, response.status);
+    }
 
-    const detail = data.detail;
-    const message = Array.isArray(detail)
-      ? detail.map((d) => d.msg).join(", ")
-      : detail || "Request failed";
-    throw new ApiError(message, response.status);
+    return data;
+  } catch (error) {
+    console.error('[API Network/Request Error] URL:', url, 'Error:', error);
+    throw error;
   }
-
-  return data;
 }
 
 export { request, ApiError };
