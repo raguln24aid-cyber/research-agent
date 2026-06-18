@@ -4,12 +4,16 @@ const API_BASE = import.meta.env.VITE_API_BASE_URL ?? '';
 
 console.log('[API] VITE_API_BASE_URL =', API_BASE);
 
+// DEBUG: this file is part of an unused / duplicate axios client in this repo.
+// Keeping logs for now, but it should not be used by the deployed frontend (frontend uses frontend/src/services/api.js). 
+
+
 const api = axios.create({
 	baseURL: API_BASE || undefined,
 });
 
 // Request interceptor: attach token, log URL/headers/token, prevent /api/auth/me if no token
-api.interceptors.request.use((config) => {
+api.interceptors.request.use((config: any) => {
 	const token = localStorage.getItem('token') ?? sessionStorage.getItem('token') ?? null;
 	console.log('[API] token from storage =', token);
 

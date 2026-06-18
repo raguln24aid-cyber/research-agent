@@ -1,4 +1,4 @@
-import { request } from "./api";
+ import { request } from "./api";
 
 export const authService = {
   signup: (data) =>
@@ -8,4 +8,5 @@ export const authService = {
     request("/auth/login", { method: "POST", body: JSON.stringify(data) }),
 
   me: () => request("/auth/me"),
+
 };

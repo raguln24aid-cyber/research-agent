@@ -8,14 +8,21 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token") ?? sessionStorage.getItem("token");
+    console.log('[Auth] token loaded=', token);
+
+
     if (!token) {
       setLoading(false);
       return;
     }
 
+    console.log('[Auth] calling /auth/me');
+
+
     authService
       .me()
+
       .then(setUser)
       .catch(() => {
         localStorage.removeItem("token");
